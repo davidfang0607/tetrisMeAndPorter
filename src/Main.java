@@ -7,13 +7,22 @@ import java.awt.event.*;
  */
 public class Main extends JPanel implements ActionListener, KeyListener, MouseListener{
     private Timer timer;
-    private int pace;
+    private int pace, size;
+    private Cell[][] board;
 
     public Main(int w, int h){
         setSize(w, h);
 
 
         //world.test();
+        board = new Cell[10][18];
+        for (int r = 0; r < board.length; r++) {
+            for (int c = 0; c < board[0].length; c++) {
+                board[r][c] = new Cell(r,c);
+            }
+        }
+
+        size = 30;
         pace = 100;
         timer = new Timer(pace, this);
         timer.start();
@@ -26,6 +35,13 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
+        g2.setColor(Color.black);
+        for(Cell[] r : board){
+            for(Cell c : r) {
+                c.draw(g2);
+            }
+        }
+
 
 
     }
