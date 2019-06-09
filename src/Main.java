@@ -59,11 +59,50 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(Block p : pieces){
-           p.set();
-        }
-
+        //thePiece = pieces.get(pieces.size()-1);
+        System.out.println("hi");
+        thePiece.set();
         repaint();
+        if(thePiece.isAtBottom()){
+            //Random piece at top
+            int rand = (int)(Math.random()*7+1);
+            System.out.println(rand);
+            if(rand == 1) {
+                Block b = new Zpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 2) {
+                Block b = new Zpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 3) {
+                Block b = new Lpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 4) {
+                Block b = new RLpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 5) {
+                Block b = new Zpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 6) {
+                Block b = new Opiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+            if(rand == 7) {
+                Block b = new Tpiece(3, 0);
+                pieces.add(b);
+                thePiece = b;
+            }
+        }
     }
 
     @Override
