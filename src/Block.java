@@ -22,18 +22,30 @@ public class Block {
     }
 
     public void rotate(){
+        for(Point p : rotations[rotind]){
+            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(color);
+        }
         rotind = (rotind+1)%4;
     }
 
     public void moveRight(){
+        for(Point p : rotations[rotind]){
+            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
+        }
         curentLoc.x++;
     }
 
     public void moveLeft(){
+        for(Point p : rotations[rotind]){
+            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
+        }
         curentLoc.x--;
     }
 
     public void moveDown(){
+        for(Point p : rotations[rotind]){
+            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
+        }
         curentLoc.y++;
     }
 }
