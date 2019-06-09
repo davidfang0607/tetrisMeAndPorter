@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  * PORTER MOODY
@@ -8,7 +9,8 @@ import java.awt.event.*;
 public class Main extends JPanel implements ActionListener, KeyListener, MouseListener{
     private Timer timer;
     private int pace, size;
-    private Cell[][] board;
+    public static Cell[][] board;
+    private ArrayList<Piece> pieces;
 
     public Main(int w, int h){
         setSize(w, h);
@@ -21,7 +23,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
                 board[r][c] = new Cell(r,c);
             }
         }
-
+        pieces = new ArrayList<Piece>();
         size = 30;
         pace = 100;
         timer = new Timer(pace, this);
@@ -35,7 +37,9 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.black);
+
+
+
         for(Cell[] r : board){
             for(Cell c : r) {
                 c.draw(g2);
@@ -43,12 +47,15 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
         }
 
 
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        for(Piece p : pieces){
+//            p.set();
+        }
 
+        repaint();
     }
 
     @Override
