@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class RZpiece extends Block{
-    private Point[][] rotations;
+    //private Point[][] rotations;
     private Point curentLoc;
     private Color color;
 

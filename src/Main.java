@@ -73,7 +73,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
                 thePiece = b;
             }
             if(rand == 2) {
-                Block b = new Zpiece(3, 0);
+                Block b = new RZpiece(3, 0);
                 pieces.add(b);
                 thePiece = b;
             }
@@ -88,7 +88,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
                 thePiece = b;
             }
             if(rand == 5) {
-                Block b = new Zpiece(3, 0);
+                Block b = new Ipiece(3, 0);
                 pieces.add(b);
                 thePiece = b;
             }

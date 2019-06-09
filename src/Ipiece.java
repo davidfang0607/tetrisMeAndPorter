@@ -2,10 +2,10 @@ import java.awt.*;
 
 public class Ipiece extends Block{
     //private Point[][] rotations;
-    private Point curentLoc;
-    private Color color;
-    private int rotind;
-    private boolean isLive;
+//    private Point curentLoc;
+//    private Color color;
+//    private int rotind;
+//    private boolean isLive;
 //not finished
     public Ipiece(int x, int y){
         super(x,y,new Color(72, 228, 233));
@@ -32,15 +32,15 @@ public class Ipiece extends Block{
         rotations[3][3] = new Point(3, 1);
     }
 
-    @Override
-    public boolean isAtBottom() {
-        for(Point p : rotations[rotind]){
-            if(curentLoc.y+p.y>15) {
-                isLive = false;
-                return true;
-            }
-        }
-        return false;
-    }
+//    @Override
+//    public boolean isAtBottom() {
+//        for(Point p : rotations[rotind]){
+//            if(curentLoc.y+p.y>15) {
+//                isLive = false;
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
 }

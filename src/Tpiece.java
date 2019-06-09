@@ -6,7 +6,7 @@ public class Tpiece extends Block{
     private Color color;
 
     public Tpiece(int x, int y){
-        super(x,y,Color.white);
+        super(x,y,new Color(235,80,230));
 
         //here's where we hardcode coordinates...
         rotations[0][0] = new Point(0, 1);

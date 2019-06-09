@@ -33,11 +33,11 @@ public class Cell {
             g2.setColor(color);
             g2.fillRect(row * size, col * size, size, size);
         }
-        if(color == Color.white){
+        if(color.equals(new Color(235, 80, 230))){
             g2.setColor(color);
             g2.fillRect(row * size, col * size, size, size);
         }
-        if(color == new Color(72, 228, 233)){
+        if(color.equals(new Color(72, 228, 233))){
             g2.setColor(color);
             g2.fillRect(row * size, col * size, size, size);
         }
