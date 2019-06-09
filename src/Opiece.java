@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Opiece extends Block{
-    private Point[][] rotations;
+    private Point[][] rotIndexO;
     private Point curentLoc;
     private Color color;
 
@@ -9,22 +9,12 @@ public class Opiece extends Block{
         super(x,y,Color.YELLOW);
 
         //here's where we hardcode coordinates...
-        rotations[0][0] = new Point(0,0);
-        rotations[0][1] = new Point(0,0);
-        rotations[0][2] = new Point(0,0);
-        rotations[0][3] = new Point(0,0);
-        rotations[1][0] = new Point(0,0);
-        rotations[1][1] = new Point(0,0);
-        rotations[1][2] = new Point(0,0);
-        rotations[1][3] = new Point(0,0);
-        rotations[2][0] = new Point(0,0);
-        rotations[2][1] = new Point(0,0);
-        rotations[2][2] = new Point(0,0);
-        rotations[2][3] = new Point(0,0);
-        rotations[3][0] = new Point(0,0);
-        rotations[3][1] = new Point(0,0);
-        rotations[3][2] = new Point(0,0);
-        rotations[3][3] = new Point(0,0);
+        for (int i = 0; i < 3; i++) {
+            rotIndexO[i][0] = new Point(0, 0);
+            rotIndexO[i][1] = new Point(0, 1);
+            rotIndexO[i][2] = new Point(1, 0);
+            rotIndexO[i][3] = new Point(1, 1);
+        }
     }
 
 }

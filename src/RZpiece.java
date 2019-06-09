@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class RZpiece extends Block{
-    private Point[][] rotations;
+    private Point[][] rotIndexrZ;
     private Point curentLoc;
     private Color color;
 
@@ -9,22 +9,18 @@ public class RZpiece extends Block{
         super(x,y,Color.GREEN);
 
         //here's where we hardcode coordinates...
-        rotations[0][0] = new Point(0,0);
-        rotations[0][1] = new Point(0,0);
-        rotations[0][2] = new Point(0,0);
-        rotations[0][3] = new Point(0,0);
-        rotations[1][0] = new Point(0,0);
-        rotations[1][1] = new Point(0,0);
-        rotations[1][2] = new Point(0,0);
-        rotations[1][3] = new Point(0,0);
-        rotations[2][0] = new Point(0,0);
-        rotations[2][1] = new Point(0,0);
-        rotations[2][2] = new Point(0,0);
-        rotations[2][3] = new Point(0,0);
-        rotations[3][0] = new Point(0,0);
-        rotations[3][1] = new Point(0,0);
-        rotations[3][2] = new Point(0,0);
-        rotations[3][3] = new Point(0,0);
+        for (int i = 0; i < 2; i += 2) {
+            rotIndexrZ[i][0] = new Point(1, 0);
+            rotIndexrZ[i][1] = new Point(1, 1);
+            rotIndexrZ[i][2] = new Point(0, 1);
+            rotIndexrZ[i][3] = new Point(0, 2);
+        }
+
+        for (int i = 1; i < 2; i += 2) {
+            rotIndexrZ[i][0] = new Point(0, 0);
+            rotIndexrZ[i][1] = new Point(1, 0);
+            rotIndexrZ[i][2] = new Point(1, 1);
+            rotIndexrZ[i][3] = new Point(2, 1);
     }
 
 }
