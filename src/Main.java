@@ -10,7 +10,8 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     private Timer timer;
     private int pace, size;
     public static Cell[][] board;
-    private ArrayList<Piece> pieces;
+    private ArrayList<Block> pieces;
+    private Block thePiece;
 
     public Main(int w, int h){
         setSize(w, h);
@@ -23,14 +24,21 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
                 board[r][c] = new Cell(r,c);
             }
         }
-        pieces = new ArrayList<Piece>();
+        pieces = new ArrayList<Block>();
         size = 30;
         pace = 100;
         timer = new Timer(pace, this);
         timer.start();
 
+
         addKeyListener(this);
         addMouseListener(this);
+
+
+
+
+        pieces.add(new Zpiece(3,0));
+        thePiece = pieces.get(pieces.size()-1);
     }
 
     @Override
@@ -51,8 +59,8 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        for(Piece p : pieces){
-//            p.set();
+        for(Block p : pieces){
+           p.set();
         }
 
         repaint();
@@ -65,7 +73,18 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 
     @Override
     public void keyPressed(KeyEvent e) {
-
+        if(e.getKeyCode() == KeyEvent.VK_UP){
+            thePiece.rotate();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+            thePiece.moveRight();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_LEFT){
+            thePiece.moveLeft();
+        }
+        if(e.getKeyCode() == KeyEvent.VK_DOWN){
+            thePiece.moveDown();
+        }
     }
 
     @Override

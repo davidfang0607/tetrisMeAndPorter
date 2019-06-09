@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Block {
 
-    private Point[][] rotations;
+    public Point[][] rotations;
     private Point curentLoc;
     private int rotind;
     private Color color;
@@ -14,6 +14,7 @@ public class Block {
         this.color = color;
     }
 
+
     public void set(){
         for(Point p : rotations[rotind]){
             Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(color);
@@ -22,5 +23,17 @@ public class Block {
 
     public void rotate(){
         rotind = (rotind+1)%4;
+    }
+
+    public void moveRight(){
+        curentLoc.x++;
+    }
+
+    public void moveLeft(){
+        curentLoc.x--;
+    }
+
+    public void moveDown(){
+        curentLoc.y++;
     }
 }
