@@ -18,7 +18,7 @@ public class Piece {
     private Point[][] rotIndexI;
     private Point[][] rotIndexO;
     private Point curentLoc;
-    private int x, y;
+    private int x, y, z;
     private Color color;
 
 
