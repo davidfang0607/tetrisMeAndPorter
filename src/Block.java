@@ -61,10 +61,26 @@ public class Block {
     }
 
     public boolean isAtBottom() {
-        for(Point p : rotations[rotind]){
-            if(curentLoc.y+p.y>16) {
+        for(int i = 0; i < 4; i++){
+            //if it hits the bottom
+            if(curentLoc.y+rotations[rotind][i].y>16) {
                 isLive = false;
                 return true;
+            }
+            //if the cell below is not open
+            if(Main.board[curentLoc.x+rotations[rotind][i].x][curentLoc.y+rotations[rotind][i].y+1].getColor()!=Color.black){
+                //if the cell below is not one of the three other cells in the piece
+                if(Main.board[curentLoc.x+rotations[rotind][i].x][curentLoc.y+rotations[rotind][i].y+1]!=
+                        Main.board[curentLoc.x+rotations[rotind][(i+1)%4].x][curentLoc.y+rotations[rotind][(i+1)%4].y]){
+                    if(Main.board[curentLoc.x+rotations[rotind][i].x][curentLoc.y+rotations[rotind][i].y+1]!=
+                            Main.board[curentLoc.x+rotations[rotind][(i+2)%4].x][curentLoc.y+rotations[rotind][(i+2)%4].y]){
+                        if(Main.board[curentLoc.x+rotations[rotind][i].x][curentLoc.y+rotations[rotind][i].y+1]!=
+                                Main.board[curentLoc.x+rotations[rotind][(i+3)%4].x][curentLoc.y+rotations[rotind][(i+3)%4].y]){
+                            isLive = false;
+                            return true;
+                        }
+                    }
+                }
             }
         }
         return false;

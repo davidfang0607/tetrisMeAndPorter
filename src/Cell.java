@@ -51,6 +51,10 @@ public class Cell {
         this.color = color;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
     public int getRow() {
         return row;
     }
