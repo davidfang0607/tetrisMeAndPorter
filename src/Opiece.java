@@ -5,8 +5,8 @@ public class Opiece extends Block{
     private Point curentLoc;
     private Color color;
 
-    public Opiece(int x, int y){
-        super(x,y,Color.YELLOW);
+    public Opiece(int y, int x){
+        super(y,x,Color.YELLOW);
 
         //here's where we hardcode coordinates...
         for (int i = 0; i < 4; i++) {

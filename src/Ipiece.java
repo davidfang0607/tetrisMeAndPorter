@@ -7,8 +7,8 @@ public class Ipiece extends Block{
 //    private int rotind;
 //    private boolean isLive;
 //not finished
-    public Ipiece(int x, int y){
-        super(x,y,new Color(72, 228, 233));
+    public Ipiece(int y, int x){
+        super(y,x,new Color(72, 228, 233));
 
         //here's where we hardcode coordinates...
         rotations[0][0] = new Point(0, 0);
