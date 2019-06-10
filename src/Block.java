@@ -1,3 +1,5 @@
+import com.sun.java.swing.action.ExitAction;
+
 import java.awt.*;
 
 public class Block {
@@ -33,6 +35,11 @@ public class Block {
     }
 
     public void rotate(){
+        for (Point p : rotations[(rotind+1)%4]) {
+            if (curentLoc.x+p.x>=Main.board.length||curentLoc.x+p.x<0) {
+                return;
+            }
+        }
         for(Point p : rotations[rotind]){
             Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
         }
@@ -40,13 +47,23 @@ public class Block {
     }
 
     public void moveRight(){
-        for(Point p : rotations[rotind]){
-            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
+        for (Point p : rotations[rotind]) {
+            if (curentLoc.x+1+p.x >= Main.board.length) {
+                return;
+            }
+        }
+        for (Point p : rotations[rotind]) {
+            Main.board[curentLoc.x + p.x][curentLoc.y + p.y].setColor(Color.BLACK);
         }
         curentLoc.x++;
     }
 
     public void moveLeft(){
+        for (Point p : rotations[rotind]) {
+            if (curentLoc.x+p.x<1) {
+                return;
+            }
+        }
         for(Point p : rotations[rotind]){
             Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
         }

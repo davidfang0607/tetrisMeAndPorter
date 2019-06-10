@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Main extends JPanel implements ActionListener, KeyListener, MouseListener{
     private Timer timer;
-    private int pace, size;
+    private int pace, size, counter, movenum;
     public static Cell[][] board;
     private ArrayList<Block> pieces;
     private Block thePiece;
@@ -26,9 +26,11 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
         }
         pieces = new ArrayList<Block>();
         size = 30;
-        pace = 100;
+        pace = 1000/60;
         timer = new Timer(pace, this);
         timer.start();
+        counter = 0;
+        movenum = 60;
 
 
         addKeyListener(this);
@@ -39,6 +41,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
 
         pieces.add(new Zpiece(3,0));
         thePiece = pieces.get(pieces.size()-1);
+        thePiece.set();
     }
 
     @Override
@@ -60,9 +63,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
         //thePiece = pieces.get(pieces.size()-1);
-        System.out.println("hi");
-        thePiece.set();
-        repaint();
+
         if(thePiece.isAtBottom()){
             //Random piece at top
             int rand = (int)(Math.random()*7+1);
@@ -103,6 +104,16 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
                 thePiece = b;
             }
         }
+        if(counter==movenum){
+            thePiece.moveDown();
+            counter = 0;
+        }
+        thePiece.set();
+        counter++;
+
+        repaint();
+
+
     }
 
     @Override
