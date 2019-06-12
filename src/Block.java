@@ -11,9 +11,9 @@ public class Block {
     private boolean isLive;
     private Block block;
 
-    public Block(int x, int y, Color color){
+    public Block(int y, int x, Color color){
         rotations = new Point[4][4];
-        curentLoc = new Point(x,y);
+        curentLoc = new Point(y,x);
         rotind = 0;
         this.color = color;
         isLive = true;
