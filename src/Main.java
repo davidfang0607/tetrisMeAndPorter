@@ -63,7 +63,7 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     @Override
     public void actionPerformed(ActionEvent e) {
         //thePiece = pieces.get(pieces.size()-1);
-
+        thePiece.set();
         if(thePiece.isAtBottom()){
             //Random piece at top
             int rand = (int)(Math.random()*7+1);
@@ -105,10 +105,14 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
             }
         }
         if(counter==movenum){
-            thePiece.moveDown();
-            counter = 0;
+//            Block b = thePiece.clone();
+//            b.moveDown();
+//            if(!b.isAtBottom()) {
+                thePiece.moveDown();
+                counter = 0;
+//            }
         }
-        thePiece.set();
+
         counter++;
 
         repaint();
@@ -124,6 +128,18 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     @Override
     public void keyPressed(KeyEvent e) {
         if(e.getKeyCode() == KeyEvent.VK_UP){
+            Block b = thePiece.clone();
+            b.rotate();
+            for(Block c : pieces.subList(0, pieces.size()-1)) {
+                for (int i = 0; i < 4; i++) {
+                    for (int j = 0; j < 4; j++) {
+                        if (c.getCurentLoc().x + c.rotations[c.getRotind()][i].x == b.getCurentLoc().x + b.rotations[b.getRotind()][j].x
+                                &&c.getCurentLoc().y + c.rotations[c.getRotind()][i].y == b.getCurentLoc().y + b.rotations[b.getRotind()][j].y) {
+                            return;
+                        }
+                    }
+                }
+            }
             thePiece.rotate();
         }
         if(e.getKeyCode() == KeyEvent.VK_RIGHT){
@@ -133,7 +149,13 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
             thePiece.moveLeft();
         }
         if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            thePiece.moveDown();
+
+            Block b = thePiece.clone();
+            b.moveDown();
+            if (!thePiece.isAtBottom()) {
+                thePiece.moveDown();
+            }
+
         }
     }
 

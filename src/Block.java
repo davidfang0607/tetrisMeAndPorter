@@ -9,6 +9,7 @@ public class Block {
     private int rotind;
     private Color color;
     private boolean isLive;
+    private Block block;
 
     public Block(int x, int y, Color color){
         rotations = new Point[4][4];
@@ -19,6 +20,19 @@ public class Block {
         //assign();
     }
 
+    public Block(Block another) {
+        this.block = another.block;
+    }
+
+    public Block clone(){
+        Block c = new Block(curentLoc.x, curentLoc.y, color);
+        c.rotations = rotations;  //not new object, probs ok
+        c.rotind = rotind;
+        c.isLive = isLive;
+
+        return c;
+    }
+
 
 //    public void assign(Point[][] arr){
 //        for (int r = 0; r < 4; r++) {
@@ -27,6 +41,19 @@ public class Block {
 //            }
 //        }
 //    }
+
+
+    public Point getCurentLoc() {
+        return curentLoc;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public int getRotind() {
+        return rotind;
+    }
 
     public void set(){
         for(Point p : rotations[rotind]){
@@ -40,6 +67,7 @@ public class Block {
                 return;
             }
         }
+
         for(Point p : rotations[rotind]){
             Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
         }
@@ -52,6 +80,23 @@ public class Block {
                 return;
             }
         }
+        for(int i = 0; i < 4; i++) {
+            Cell c = Main.board[curentLoc.x + rotations[rotind][i].x+1][curentLoc.y + rotations[rotind][i].y];
+            if (c.getColor() != Color.black) {
+                //if the cell below is not one of the three other cells in the piece
+                if (c !=
+                        Main.board[curentLoc.x + rotations[rotind][(i + 1) % 4].x][curentLoc.y + rotations[rotind][(i + 1) % 4].y]) {
+                    if (c !=
+                            Main.board[curentLoc.x + rotations[rotind][(i + 2) % 4].x][curentLoc.y + rotations[rotind][(i + 2) % 4].y]) {
+                        if (c !=
+                                Main.board[curentLoc.x + rotations[rotind][(i + 3) % 4].x][curentLoc.y + rotations[rotind][(i + 3) % 4].y]) {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
         for (Point p : rotations[rotind]) {
             Main.board[curentLoc.x + p.x][curentLoc.y + p.y].setColor(Color.BLACK);
         }
@@ -64,6 +109,22 @@ public class Block {
                 return;
             }
         }
+        for(int i = 0; i < 4; i++) {
+            Cell c = Main.board[curentLoc.x + rotations[rotind][i].x-1][curentLoc.y + rotations[rotind][i].y];
+            if (c.getColor() != Color.black) {
+                //if the cell below is not one of the three other cells in the piece
+                if (c !=
+                        Main.board[curentLoc.x + rotations[rotind][(i + 1) % 4].x][curentLoc.y + rotations[rotind][(i + 1) % 4].y]) {
+                    if (c !=
+                            Main.board[curentLoc.x + rotations[rotind][(i + 2) % 4].x][curentLoc.y + rotations[rotind][(i + 2) % 4].y]) {
+                        if (c !=
+                                Main.board[curentLoc.x + rotations[rotind][(i + 3) % 4].x][curentLoc.y + rotations[rotind][(i + 3) % 4].y]) {
+                            return;
+                        }
+                    }
+                }
+            }
+        }
         for(Point p : rotations[rotind]){
             Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
         }
@@ -71,11 +132,19 @@ public class Block {
     }
 
     public void moveDown(){
-        for(Point p : rotations[rotind]){
-            Main.board[curentLoc.x+p.x][curentLoc.y+p.y].setColor(Color.BLACK);
-        }
+//        for (Point p : rotations[rotind]) {
+//            if (curentLoc.y+1+p.y >= Main.board[0].length) {
+//                System.out.println("basd");
+//                return;
+//            }
+//        }
         curentLoc.y++;
+        for(Point p : rotations[rotind]){
+            Main.board[curentLoc.x+p.x][curentLoc.y+p.y-1].setColor(Color.BLACK);
+        }
+
     }
+
 
     public boolean isAtBottom() {
         for(int i = 0; i < 4; i++){
