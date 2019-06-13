@@ -64,6 +64,19 @@ public class Main extends JPanel implements ActionListener, KeyListener, MouseLi
     public void actionPerformed(ActionEvent e) {
         //thePiece = pieces.get(pieces.size()-1);
         thePiece.set();
+
+
+//        for (int i = 0; i < board.length; i++) {
+//            for (int j = 0; j < board[0].length; j++) {
+//                if(board[i][j].getColor()==Color.black)
+//                    break;
+//            }
+//            for (int r = 0; r < i; r++) {
+//                for (int c = 0; c < board[0].length; c++) {
+//                    board[r+1][c] = board[r][c];
+//                }
+//            }
+//        }
         if(thePiece.isAtBottom()){
             //Random piece at top
             int rand = (int)(Math.random()*7+1);
